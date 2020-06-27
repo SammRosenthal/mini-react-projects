@@ -4,8 +4,14 @@ function Cell() {
   const [alive, setAlive] = useState(false);
 
   return (
-    <div>
-      <p>test text</p>
-    </div>
+    <div
+      onClick={() => setAlive(!alive)}
+      style={{
+        width: 20,
+        height: 20,
+        backgroundColor: alive ? "pink" : undefined,
+        border: "solid 1px black",
+      }}
+    ></div>
   );
 }
