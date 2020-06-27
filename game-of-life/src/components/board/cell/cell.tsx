@@ -15,3 +15,5 @@ function Cell() {
     ></div>
   );
 }
+
+export default Cell;
