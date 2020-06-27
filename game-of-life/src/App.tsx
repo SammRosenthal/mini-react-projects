@@ -9,12 +9,10 @@ function App() {
     for (let i = 0; i < numRows; i++) {
       rows.push(Array.from(Array(numCols), () => 0));
     }
-    console.log(rows);
 
     return rows;
   });
 
-  console.log(grid);
   return <div className="App">yo</div>;
 }
 
