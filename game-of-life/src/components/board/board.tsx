@@ -13,7 +13,16 @@ function Board() {
     return rows;
   });
 
-  return <div> {board} </div>;
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${numCols}, 22px)`,
+      }}
+    >
+      {board}
+    </div>
+  );
 }
 
 export default Board;
