@@ -13,13 +13,7 @@ function Board() {
     return rows;
   });
 
-  return (
-    <div>
-      {board.map((v) => (
-        <>{v}</>
-      ))}
-    </div>
-  );
+  return <div> {board} </div>;
 }
 
 export default Board;
