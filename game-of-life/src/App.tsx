@@ -1,19 +1,15 @@
 import React, { useState } from "react";
+import Board from "./components/board/board";
 
 const numRows = 50;
 const numCols = 50;
 
 function App() {
-  const [grid, setGrid] = useState(() => {
-    const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0));
-    }
-
-    return rows;
-  });
-
-  return <div className="App">yo</div>;
+  return (
+    <div className="App">
+      <Board />
+    </div>
+  );
 }
 
 export default App;
