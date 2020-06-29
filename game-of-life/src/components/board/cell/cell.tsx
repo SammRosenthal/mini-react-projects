@@ -1,10 +1,10 @@
 import React, { useState, useEffect, SFC } from "react";
 
-interface Props {
+interface CellProps {
   status: boolean;
 }
 
-const Cell: React.SFC<Props> = (props) => {
+const Cell: React.SFC<CellProps> = (props) => {
   const [alive, setAlive] = useState(false);
 
   useEffect(() => {
