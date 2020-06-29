@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, SFC } from "react";
 
-function Cell() {
+interface Props {
+  status: boolean;
+}
+
+const Cell: React.SFC<Props> = (props) => {
   const [alive, setAlive] = useState(false);
 
+  useEffect(() => {
+    setAlive(props.status);
+  }, []);
   return (
     <div
       onClick={() => setAlive(!alive)}
@@ -14,6 +21,6 @@ function Cell() {
       }}
     ></div>
   );
-}
+};
 
 export default Cell;
