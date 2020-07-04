@@ -4,6 +4,17 @@ import Cell from "./cell/cell";
 const numRows = 50;
 const numCols = 50;
 
+const operations = [
+  [0, 1],
+  [0, -1],
+  [1, -1],
+  [1, 1],
+  [1, 0],
+  [-1, 1],
+  [-1, -1],
+  [-1, 0],
+];
+
 function Board() {
   const [board, setBoard] = useState();
   const [running, setRunning] = useState(false);
@@ -17,7 +28,7 @@ function Board() {
   runningRef.current = running;
 
   const runSimulation = useCallback(() => {
-    if (!running) {
+    if (!runningRef.current) {
       return;
     }
     setTimeout(runSimulation, 1000);
