@@ -1,25 +1,23 @@
 import React, { useState, useEffect, SFC } from "react";
 
-interface CellProps {
-  status: boolean;
-}
+type CellProps = {
+  boxClass: string;
+  key: string;
+  id: string;
+  boxId: string;
+  row: number;
+  col: number;
+  selectBox: object;
+};
 
-const Cell: React.SFC<CellProps> = (props) => {
-  const [alive, setAlive] = useState(false);
-
-  useEffect(() => {
-    setAlive(props.status);
-  }, []);
+const Cell = (props: CellProps) => {
+  const selectBox = (): void => {
+    if (typeof props.selectBox === "function") {
+      props.selectBox(props.row, props.col);
+    }
+  };
   return (
-    <div
-      onClick={() => setAlive(!alive)}
-      style={{
-        width: 20,
-        height: 20,
-        backgroundColor: alive ? "pink" : undefined,
-        border: "solid 1px black",
-      }}
-    ></div>
+    <div className={props.boxClass} id={props.id} onClick={() => selectBox()} />
   );
 };
 
