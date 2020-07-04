@@ -1,4 +1,5 @@
-import React, { useState, useEffect, SFC } from "react";
+import React from "react";
+import "./cell.css";
 
 type CellProps = {
   boxClass: string;

@@ -1,38 +1,44 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Cell from "../board/cell/cell";
+import "./grid.css";
 
-function Grid(props: {
+type GridProps = {
   gridFull: Array<Array<boolean>>;
   rows: number;
   cols: number;
   selectBox: object;
-}) {
+};
+const Grid = (props: GridProps) => {
   const width = props.cols * 14;
-  let rowsArr = [];
+  const [rowsArr, setRowsArr] = useState<JSX.Element[]>([]);
 
-  let boxClass = "";
-  for (let i = 0; i < props.rows; i++) {
-    for (let j = 0; j < props.cols; j++) {
-      let boxId = i + " " + j;
-      boxClass = props.gridFull[i][j] ? "box on" : "box off";
-      rowsArr.push(
-        <Cell
-          boxClass={boxClass}
-          key={boxId}
-          boxId={boxId}
-          row={i}
-          col={j}
-          selectBox={props.selectBox}
-        />
-      );
+  useEffect(() => {
+    let tempArr: JSX.Element[] = [];
+
+    for (let i = 0; i < props.rows; i++) {
+      for (let j = 0; j < props.cols; j++) {
+        let boxId = i + " " + j;
+        tempArr.push(
+          <Cell
+            boxClass={props.gridFull[i][j] ? "box on" : "box off"}
+            key={boxId}
+            id={boxId}
+            boxId={boxId}
+            row={i}
+            col={j}
+            selectBox={props.selectBox}
+          />
+        );
+      }
     }
-  }
+    setRowsArr(tempArr);
+  }, [props.rows, props.cols, props.selectBox, props.gridFull]);
 
   return (
     <h1 className="grid" style={{ width: width }}>
-      {{ rowsArr }}
+      {rowsArr}
     </h1>
   );
-}
+};
 
 export default Grid;
