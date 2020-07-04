@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Cell from "./cell/cell";
 
 const numRows = 50;
@@ -6,10 +6,21 @@ const numCols = 50;
 
 function Board() {
   const [board, setBoard] = useState();
+  const [running, setRunning] = useState(false);
 
   useEffect(() => {
     let gameBoard = makeBoard();
     setBoard(gameBoard);
+  }, []);
+
+  const runningRef = useRef(running);
+  runningRef.current = running;
+
+  const runSimulation = useCallback(() => {
+    if (!running) {
+      return;
+    }
+    setTimeout(runSimulation, 1000);
   }, []);
 
   const makeBoard = () => {
@@ -28,8 +39,9 @@ function Board() {
           display: "inline",
         }}
       >
-        <button>Start</button>
-        <button>Stop</button>
+        <button onClick={() => setRunning(!running)}>
+          {running ? "Stop" : "Start"}
+        </button>
         <button onClick={() => setBoard(makeBoard())}>Reset</button>
       </div>
       <div
