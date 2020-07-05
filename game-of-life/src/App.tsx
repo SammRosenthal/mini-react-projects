@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Grid from "./components/grid/Grid";
+import "./app.css";
 
 let speed = 100;
 let rows = 30;
@@ -12,7 +13,14 @@ function App() {
   });
 
   const selectBox = (row: number, col: number) => {
-    console.log("hello world");
+    let gridFullCopy = arrayClone(gridFull);
+    gridFullCopy[row][col] = !gridFullCopy[row][col];
+    setGridFull(gridFullCopy);
+  };
+
+  // this needs to be parsed out to a hook
+  const arrayClone = (arr: Array<Array<boolean>>): Array<Array<boolean>> => {
+    return JSON.parse(JSON.stringify(arr));
   };
 
   return (
