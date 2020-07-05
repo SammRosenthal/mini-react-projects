@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import Grid from "./components/grid/Grid";
 import "./app.css";
 
-let speed: number = 100;
-let rows: number = 30;
-let cols: number = 50;
-let intervalId: any = 0;
+let cols = 50;
+let rows = 30;
 
 function App() {
   const [generation, setGeneration] = useState(0);
   const [gridFull, setGridFull] = useState<Array<Array<boolean>>>(() => {
     return Array(rows).fill(Array(cols).fill(false));
   });
+
+  let speed: number = 100;
+  let intervalId: any = undefined;
 
   const selectBox = (row: number, col: number): void => {
     let gridFullCopy = arrayClone(gridFull);
@@ -32,14 +33,46 @@ function App() {
     setGridFull(newGridFullCopy);
   };
 
-  const resetBoard = (): void => {
-    let tempArr = Array(rows).fill(Array(cols).fill(false));
-    setGridFull(tempArr);
-  };
-
   const playGame = (): void => {
     clearInterval(intervalId);
     intervalId = setInterval(play, speed);
+  };
+
+  const pauseGame = (): void => {
+    clearInterval(intervalId);
+  };
+
+  const slow = (): void => {
+    speed = 1000;
+    playGame();
+  };
+
+  const fast = (): void => {
+    speed = 100;
+    playGame();
+  };
+
+  const gridSize = (size: string): void => {
+    switch (size) {
+      case "1":
+        cols = 20;
+        rows = 10;
+        break;
+      case "2":
+        cols = 50;
+        rows = 30;
+        break;
+      default:
+        cols = 70;
+        rows = 50;
+    }
+    clearBoard();
+  };
+
+  const clearBoard = (): void => {
+    const newGrid = Array(rows).fill(Array(cols).fill(false));
+    setGridFull(newGrid);
+    setGeneration(0);
   };
 
   const play = () => {
@@ -75,7 +108,12 @@ function App() {
     <div>
       <h1>The Game of Life</h1>
       <button onClick={seed}>Random Board</button>
-      <button onClick={resetBoard}>Empty Board</button>
+      <button onClick={clearBoard}>Clear Board</button>
+      <button onClick={playGame}>Start</button>
+      <button onClick={pauseGame}>Stop</button>
+      <button onClick={slow}>Slow Down</button>
+      <button onClick={fast}>Speed Up</button>
+      <button onClick={() => gridSize("1")}>Change Size</button>
       <Grid gridFull={gridFull} rows={rows} cols={cols} selectBox={selectBox} />
       <h2>Generations: {generation}</h2>
     </div>
