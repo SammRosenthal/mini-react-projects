@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "./components/grid/Grid";
 import "./app.css";
 
@@ -25,7 +25,6 @@ function App() {
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         if (Math.floor(Math.random() * 4) === 1) {
-          console.log("we in here");
           newGridFullCopy[i][j] = true;
         }
       }
@@ -40,6 +39,7 @@ function App() {
 
   const pauseGame = (): void => {
     clearInterval(intervalId);
+    clearBoard();
   };
 
   const slow = (): void => {
