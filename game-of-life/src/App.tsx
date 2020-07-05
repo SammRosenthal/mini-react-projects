@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Grid from "./components/grid/Grid";
 import "./app.css";
 
-let speed = 100;
-let rows = 30;
-let cols = 50;
+let speed: number = 100;
+let rows: number = 30;
+let cols: number = 50;
+let intervalId: any = 0;
 
 function App() {
   const [generation, setGeneration] = useState(0);
@@ -47,19 +48,22 @@ function App() {
 
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
-        let count = 0;
-        if (i > 0) if (grid[i - 1][j]) count++;
-        if (i > 0 && j > 0) if (grid[i - 1][j - 1]) count++;
-        if (i > 0 && j < cols - 1) if (grid[i - 1][j + 1]) count++;
-        if (j < cols - 1) if (grid[i][j + 1]) count++;
-        if (j > 0) if (grid[i][j - 1]) count++;
-        if (i < rows - 1) if (grid[i + 1][j]) count++;
-        if (i < rows - 1 && j > 0) if (grid[i + 1][j - 1]) count++;
-        if (i < rows - 1 && j < cols - 1) if (grid[i + 1][j + 1]) count++;
-        if (grid[i][j] && (count < 2 || count > 3)) gridClone[i][j] = false;
-        if (!grid[i][j] && count === 3) gridClone[i][j] = true;
+        let neighbors = 0;
+        if (i > 0) if (grid[i - 1][j]) neighbors++;
+        if (i > 0 && j > 0) if (grid[i - 1][j - 1]) neighbors++;
+        if (i > 0 && j < cols - 1) if (grid[i - 1][j + 1]) neighbors++;
+        if (j < cols - 1) if (grid[i][j + 1]) neighbors++;
+        if (j > 0) if (grid[i][j - 1]) neighbors++;
+        if (i < rows - 1) if (grid[i + 1][j]) neighbors++;
+        if (i < rows - 1 && j > 0) if (grid[i + 1][j - 1]) neighbors++;
+        if (i < rows - 1 && j < cols - 1) if (grid[i + 1][j + 1]) neighbors++;
+        if (grid[i][j] && (neighbors < 2 || neighbors > 3))
+          gridClone[i][j] = false;
+        if (!grid[i][j] && neighbors === 3) gridClone[i][j] = true;
       }
     }
+    setGeneration(generation + 1);
+    setGridFull(gridClone);
   };
 
   // this needs to be parsed out to a hook??
