@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Grid from "./components/grid/Grid";
 import useInterval from "./hooks/useInterval";
 import "./app.css";
@@ -12,8 +12,6 @@ function App() {
   const [gridFull, setGridFull] = useState<Array<Array<boolean>>>(() => {
     return Array(rows).fill(Array(cols).fill(false));
   });
-
-  let intervalId: any = undefined;
 
   const selectBox = (row: number, col: number): void => {
     let gridFullCopy = arrayClone(gridFull);
