@@ -37,8 +37,6 @@ function App() {
   };
 
   const playGame = (): void => {
-    // clearInterval(intervalId);
-    //intervalId = setInterval(play, speed);
     setSpeed(1000);
   };
 
@@ -59,6 +57,7 @@ function App() {
     const newGrid = Array(rows).fill(Array(cols).fill(false));
     setGridFull(newGrid);
     setGeneration(0);
+    setSpeed(null);
   };
 
   // state is not updating????
@@ -105,22 +104,22 @@ function App() {
         <Row className="justify-content-center">
           <Button className="m-1" variant="primary" onClick={seed}>
             Random Board
-          </Button>{" "}
+          </Button>
           <Button className="m-1" onClick={clearBoard}>
             Clear Board
-          </Button>{" "}
+          </Button>
           <Button className="m-1" variant="success" onClick={playGame}>
             Start
-          </Button>{" "}
+          </Button>
           <Button className="m-1" variant="danger" onClick={pauseGame}>
             Stop
-          </Button>{" "}
+          </Button>
           <Button className="m-1" onClick={slow}>
             Slow Down
-          </Button>{" "}
+          </Button>
           <Button className="m-1" onClick={fast}>
             Speed Up
-          </Button>{" "}
+          </Button>
         </Row>
         <Grid
           gridFull={gridFull}
