@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Grid from "./components/grid/Grid";
+import useInterval from "./hooks/useInterval";
 import "./app.css";
 
-let cols = 50;
-let rows = 30;
+let cols: number = 50;
+let rows: number = 30;
 
 function App() {
   const [generation, setGeneration] = useState(0);
+  const [speed, setSpeed] = useState<number | null>(null);
   const [gridFull, setGridFull] = useState<Array<Array<boolean>>>(() => {
     return Array(rows).fill(Array(cols).fill(false));
   });
 
-  let speed: number = 100;
   let intervalId: any = undefined;
 
   const selectBox = (row: number, col: number): void => {
@@ -22,6 +23,7 @@ function App() {
 
   const seed = (): void => {
     let newGridFullCopy = arrayClone(gridFull);
+
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         if (Math.floor(Math.random() * 4) === 1) {
@@ -29,29 +31,29 @@ function App() {
         }
       }
     }
+
     setGridFull(newGridFullCopy);
   };
 
   const playGame = (): void => {
-    clearInterval(intervalId);
-    intervalId = setInterval(play, speed);
+    // clearInterval(intervalId);
+    //intervalId = setInterval(play, speed);
+    setSpeed(1000);
   };
 
   const pauseGame = (): void => {
-    clearInterval(intervalId);
-    clearBoard();
+    setSpeed(null);
   };
 
   const slow = (): void => {
-    speed = 1000;
-    playGame();
+    setSpeed(1000);
   };
 
   const fast = (): void => {
-    speed = 100;
-    playGame();
+    setSpeed(100);
   };
 
+  // need to change button to a dropdown
   const gridSize = (size: string): void => {
     switch (size) {
       case "1":
@@ -69,15 +71,17 @@ function App() {
     clearBoard();
   };
 
+  // this is working now :)
   const clearBoard = (): void => {
     const newGrid = Array(rows).fill(Array(cols).fill(false));
     setGridFull(newGrid);
     setGeneration(0);
   };
 
+  // state is not updating????
   const play = () => {
     let grid = gridFull;
-    let gridClone = arrayClone(gridFull);
+    let gridClone = arrayClone(grid);
 
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
@@ -95,14 +99,16 @@ function App() {
         if (!grid[i][j] && neighbors === 3) gridClone[i][j] = true;
       }
     }
+
     setGeneration(generation + 1);
     setGridFull(gridClone);
   };
 
-  // this needs to be parsed out to a hook??
   const arrayClone = (arr: Array<Array<boolean>>): Array<Array<boolean>> => {
     return JSON.parse(JSON.stringify(arr));
   };
+
+  useInterval(play, speed);
 
   return (
     <div>
