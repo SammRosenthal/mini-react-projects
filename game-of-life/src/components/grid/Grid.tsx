@@ -9,7 +9,7 @@ type GridProps = {
   selectBox: object;
 };
 const Grid = (props: GridProps) => {
-  const width = props.cols * 16;
+  const width = props.cols * 21;
   const [rowsArr, setRowsArr] = useState<JSX.Element[]>([]);
 
   useEffect(() => {

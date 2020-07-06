@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Grid from "./components/grid/Grid";
 import useInterval from "./hooks/useInterval";
-import "./app.css";
+import Button from "react-bootstrap/Button";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 let cols: number = 50;
 let rows: number = 30;
@@ -51,24 +54,6 @@ function App() {
     setSpeed(100);
   };
 
-  // need to change button to a dropdown
-  const gridSize = (size: string): void => {
-    switch (size) {
-      case "1":
-        cols = 20;
-        rows = 10;
-        break;
-      case "2":
-        cols = 50;
-        rows = 30;
-        break;
-      default:
-        cols = 70;
-        rows = 50;
-    }
-    clearBoard();
-  };
-
   // this is working now :)
   const clearBoard = (): void => {
     const newGrid = Array(rows).fill(Array(cols).fill(false));
@@ -109,18 +94,45 @@ function App() {
   useInterval(play, speed);
 
   return (
-    <div>
-      <h1>The Game of Life</h1>
-      <button onClick={seed}>Random Board</button>
-      <button onClick={clearBoard}>Clear Board</button>
-      <button onClick={playGame}>Start</button>
-      <button onClick={pauseGame}>Stop</button>
-      <button onClick={slow}>Slow Down</button>
-      <button onClick={fast}>Speed Up</button>
-      <button onClick={() => gridSize("1")}>Change Size</button>
-      <Grid gridFull={gridFull} rows={rows} cols={cols} selectBox={selectBox} />
-      <h2>Generations: {generation}</h2>
-    </div>
+    <>
+      <Container>
+        <Jumbotron>
+          <h1>The Game of Life</h1>
+          <h5>
+            Create a random board or use your mouse to create a custom board!
+          </h5>
+        </Jumbotron>
+        <Row className="justify-content-center">
+          <Button className="m-1" variant="primary" onClick={seed}>
+            Random Board
+          </Button>{" "}
+          <Button className="m-1" onClick={clearBoard}>
+            Clear Board
+          </Button>{" "}
+          <Button className="m-1" variant="success" onClick={playGame}>
+            Start
+          </Button>{" "}
+          <Button className="m-1" variant="danger" onClick={pauseGame}>
+            Stop
+          </Button>{" "}
+          <Button className="m-1" onClick={slow}>
+            Slow Down
+          </Button>{" "}
+          <Button className="m-1" onClick={fast}>
+            Speed Up
+          </Button>{" "}
+        </Row>
+        <Grid
+          gridFull={gridFull}
+          rows={rows}
+          cols={cols}
+          selectBox={selectBox}
+        />
+      </Container>
+      <Row className="justify-content-center">
+        <h2>Generations: {generation}</h2>
+      </Row>
+    </>
   );
 }
 
