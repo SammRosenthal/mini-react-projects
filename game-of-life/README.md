@@ -11,4 +11,4 @@ In this project you will find the following:
  - Utilizing built in hooks like useState and useEffect
  
  ## Demo
- [Link to demo here!](game-of-life/game_of_life.gif)
+ [Link to demo here!](game_of_life.gif)
