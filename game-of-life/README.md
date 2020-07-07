@@ -9,3 +9,6 @@ In this project you will find the following:
  - React-Bootstrap to style the page
  - Using custom hooks to allow the setInterval, the native JavaScript function to be used with state and update correctly. Find more on about this in a very good article I found [here](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
  - Utilizing built in hooks like useState and useEffect
+ 
+ ## Demo
+ [Link to demo here!](https://github.com/SammRosenthal/mini-react-projects/blob/master/game-of-life/game_of_life.gif)
