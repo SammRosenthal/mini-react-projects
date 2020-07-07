@@ -1,5 +1,5 @@
 # Conway's Game of Life
-This is a rewrite of the popular YouTube guide by @[carnesbeau](https://twitter.com/carnesbeau) found [here](https://www.youtube.com/watch?v=PM0_Er3SvFQ&t).
+This is a rewrite of the popular YouTube guide by @[beaucarnes](https://twitter.com/carnesbeau) found [here](https://www.youtube.com/watch?v=PM0_Er3SvFQ&t).
 
 This was rewritten from using the old Class based react model to using functional components and hooks. This was also ported from vanilla ES6 JavaScript to TypeScript.
 
