@@ -11,4 +11,4 @@ In this project you will find the following:
  - Utilizing built in hooks like useState and useEffect
  
  ## Demo
- [Link to demo here!](./game_of_life.gif)
+ ![](https://github.com/SammRosenthal/mini-react-projects/blob/master/game-of-life/game_of_life.gif)
