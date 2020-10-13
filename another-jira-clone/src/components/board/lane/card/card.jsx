@@ -16,14 +16,14 @@ function Card(props) {
     return(
         <div className="cardContainer">
             <div className="cardHeader">
-                {title}
+                <h1>{title}</h1>
             </div>
             <div className="cardStatus">
-                {status}
+                <h3>{status}</h3>
             </div>
             <div className="cardInfo">
-                {user}
-                {points}
+                <h5>{user}</h5>
+                <h5>{points}</h5>
             </div>
         </div>
     )

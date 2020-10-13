@@ -1,3 +1,36 @@
 .cardContainer {
-    border: solid 1px black;
+    border: solid 1px #333;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+    font-size: 14px;
+    height: 20vh;
+    max-height: 175px;
+    width: 90%;
+
+    .cardHeader {
+        display: flex;
+        justify-content: flex-start;
+
+        h1 {
+            margin: 5px;
+        }
+    }
+
+    .cardStatus {
+        display: flex;
+        justify-content: flex-start;
+
+        h3 {
+            margin: 5px;
+        }
+    }
+
+    .cardInfo {
+        display: flex;
+        justify-content: space-evenly;
+        
+        h5 {
+        }
+    }
 }
