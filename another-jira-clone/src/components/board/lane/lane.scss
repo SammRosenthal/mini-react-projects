@@ -1,3 +1,27 @@
 .laneContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    margin: 5px;
+    border: 1px solid red;
+    max-width: 400px;
+    max-height: 70vh;
+    min-height: 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .laneTitle {
+        background: red;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        height: 25px;
+
+        p {
+            padding-left: 5px;
+        }
+    }
 
 }

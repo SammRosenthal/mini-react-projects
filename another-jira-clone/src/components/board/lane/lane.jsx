@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Card from './card/card.jsx';
+import './lane.scss';
 
 function Lane(props) {
     const [title, setTitle] = useState("TO DO");
@@ -22,15 +23,19 @@ function Lane(props) {
             points: "3",
             user: "Dan Nguyen"
         }
+        
     ]);
 
     return (
         <div className="laneContainer">
-            <div>
-                {title}
+            <div className="laneTitle">
+                <p>{title}</p>
             </div>
             {cards.map((v, i) => {
                 return <Card 
+                    // key and id will be a unique identifier for each card
+                    key={i}
+                    id={i}
                     title={v.title}
                     status={v.status}
                     points={v.points}
