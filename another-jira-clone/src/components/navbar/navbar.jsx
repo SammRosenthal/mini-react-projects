@@ -48,7 +48,6 @@ function Header() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="modal-title">Card Information</h2>
       <p id="modal-description">this is the body</p>
-      <Header />
     </div>
   );
 
@@ -61,7 +60,7 @@ function Header() {
         </Button>
       </Toolbar>
       <Modal open={open} onClose={handleClose}>
-        <h1>test</h1>
+        {modalBody}
       </Modal>
     </AppBar>
   );
