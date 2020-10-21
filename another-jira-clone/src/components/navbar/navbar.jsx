@@ -5,35 +5,23 @@ import { makeStyles } from "@material-ui/core/styles";
 import { MenuIcon } from "@material-ui/icons";
 import Modal from "@material-ui/core/Modal";
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyles() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%;)`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
-  paper: {
+  center: {
     position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    height: "50vh",
+    width: "75vw",
+    backgroundColor: "#f4f5f7",
+    borderRadius: "1%",
+    border: "2px solid black",
+    outline: "none"
+  }
 }));
 
 function Header() {
   const classes = useStyles();
-  const [modalStyle, getModalStyle] = useState(getModalStyles);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -45,7 +33,7 @@ function Header() {
   };
 
   const modalBody = (
-    <div style={modalStyle} className={classes.paper}>
+    <div className={classes.center}>
       <h2 id="modal-title">Card Information</h2>
       <p id="modal-description">this is the body</p>
     </div>

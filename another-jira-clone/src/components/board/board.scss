@@ -1,3 +1,5 @@
 .boardContainer {
     display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
