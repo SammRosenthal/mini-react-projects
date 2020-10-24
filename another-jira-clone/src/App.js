@@ -5,86 +5,78 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import "fontsource-roboto";
 
 function App() {
-  const [cards, addCard] = useState([
+  const [todo, addTodo] = useState([
     {
-      laneName: "TO DO",
-      laneItems: [
-        {
-          title: "Sam's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Sam Rosenthal"
-        },
-        {
-          title: "Joe's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Joe Smith"
-        },
-        {
-          title: "Dan's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Dan Nguyen"
-        }
-      ]
-    }, {
-      laneName: "IN PROGRESS",
-      laneItems: [
-        {
-          title: "Sam's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Sam Rosenthal"
-        },
-        {
-          title: "Joe's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Joe Smith"
-        },
-        {
-          title: "Dan's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Dan Nguyen"
-        }
-      ]
-    }, {
-      laneName: "IN TEST",
-      laneItems: []
-    }, {
-      laneName: "DONE",
-      laneItems: [
-        {
-          title: "Sam's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Sam Rosenthal"
-        },
-        {
-          title: "Joe's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Joe Smith"
-        },
-        {
-          title: "Dan's User Story",
-          status: "In Progress",
-          points: "3",
-          user: "Dan Nguyen"
-        }
-      ]
+      title: "Sam's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Sam Rosenthal"
+    },
+    {
+      title: "Joe's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Joe Smith"
+    },
+    {
+      title: "Dan's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Dan Nguyen"
     }
-  ]);
-
-  const createCard = () => { };
+  ])
+  const [inProgress, addInProgress] = useState([
+    {
+      title: "Sam's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Sam Rosenthal"
+    },
+    {
+      title: "Joe's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Joe Smith"
+    },
+    {
+      title: "Dan's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Dan Nguyen"
+    }
+  ])
+  const [inTest, addInTest] = useState([])
+  const [done, addDone] = useState([
+    {
+      title: "Sam's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Sam Rosenthal"
+    },
+    {
+      title: "Joe's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Joe Smith"
+    },
+    {
+      title: "Dan's User Story",
+      status: "In Progress",
+      points: "3",
+      user: "Dan Nguyen"
+    }
+  ])
 
   return (
     <>
       <CssBaseline />
       <Header />
-      <Board cards={cards} />
+      <Board
+        todo={todo}
+        inProgress={inProgress}
+        inTest={inTest}
+        done={done}
+      />
     </>
   );
 }

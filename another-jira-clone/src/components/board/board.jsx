@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Lane from './lane/lane';
 import './board.scss';
 
 function Board(props) {
     return (
         <div className="boardContainer">
-            {props.cards.map((v, i) => {
-                return <Lane
-                    laneName={v.laneName}
-                    laneItems={v.laneItems}
-                />
-            })}
+            <Lane laneName="TO DO" cards={props.todo} />
+            <Lane laneName="IN PROGRESS" cards={props.inProgress} />
+            <Lane laneName="IN TEST" cards={props.inTest} />
+            <Lane laneName="DONE" cards={props.done} />
         </div>
     )
 }
