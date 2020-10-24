@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   center: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     position: "absolute",
     left: "50%",
     top: "50%",
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: ".5%",
     border: "2px solid black",
     outline: "none",
-    padding: "0 32px"
+    padding: "18px 32px"
   },
   cardGeneralInformation: {
     display: "flex",
