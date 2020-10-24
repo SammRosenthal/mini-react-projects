@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
+    overflow: "hidden",
     height: "80vh",
     width: "800px",
     backgroundColor: "#f4f5f7",
