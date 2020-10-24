@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./navbar.scss";
-import { AppBar, Toolbar, Typography, Button, Select } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button, Select, FormControl } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     width: "732px",
     height: "500px"
   },
+  dropDown: {
+    width: 182
+  },
   textBox: {
     width: "100%",
   },
@@ -55,25 +58,30 @@ function Header() {
     setOpen(!open);
   };
 
+  const handleDropDown = (event) => {
+    setStatus(event.target.value);
+  }
+
   const modalBody = (
     <div className={classes.center}>
       <div id="cardCreationHeader"><h1>Create Card</h1></div>
       <div id="cardGeneralInformation" className={classes.cardGeneralInformation}>
         <TextField id="assignee" label="Assignee" />
         <TextField id="points" label="Story Points" />
-        <TextField id="status" label="Status" />
-        <InputLabel id="card-status">Status</InputLabel>
-        <Select
-          labelId="card-status"
-          id="card-status-select"
-          value={status}
-          onChange={setStatus}
-        >
-          <MenuItem value="TO DO">TO DO</MenuItem>
-          <MenuItem value="IN PROGRESS">IN PROGRESS</MenuItem>
-          <MenuItem value="IN TEST">IN TEST</MenuItem>
-          <MenuItem value="DONE">DONE</MenuItem>
-        </Select>
+        <FormControl className={classes.dropDown}>
+          <InputLabel id="card-status">Status</InputLabel>
+          <Select
+            labelId="card-status"
+            id="card-status-select"
+            value={status}
+            onChange={handleDropDown}
+          >
+            <MenuItem value={"TO DO"}>TO DO</MenuItem>
+            <MenuItem value={"IN PROGRESS"}>IN PROGRESS</MenuItem>
+            <MenuItem value={"IN TEST"}>IN TEST</MenuItem>
+            <MenuItem value={"DONE"}>DONE</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div id="cardContent" className={classes.cardContent}>
         <TextField
