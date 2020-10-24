@@ -70,7 +70,12 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Header />
+      <Header
+        addTodo={addTodo}
+        addInProgress={addInProgress}
+        addInTest={addInTest}
+        addDone={addDone}
+      />
       <Board
         todo={todo}
         inProgress={inProgress}

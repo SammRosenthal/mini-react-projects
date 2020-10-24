@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./navbar.scss";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button, Select } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
 import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,13 +49,10 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState("");
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
+  const handleModal = () => {
+    setOpen(!open);
   };
 
   const modalBody = (
@@ -63,6 +62,18 @@ function Header() {
         <TextField id="assignee" label="Assignee" />
         <TextField id="points" label="Story Points" />
         <TextField id="status" label="Status" />
+        <InputLabel id="card-status">Status</InputLabel>
+        <Select
+          labelId="card-status"
+          id="card-status-select"
+          value={status}
+          onChange={setStatus}
+        >
+          <MenuItem value="TO DO">TO DO</MenuItem>
+          <MenuItem value="IN PROGRESS">IN PROGRESS</MenuItem>
+          <MenuItem value="IN TEST">IN TEST</MenuItem>
+          <MenuItem value="DONE">DONE</MenuItem>
+        </Select>
       </div>
       <div id="cardContent" className={classes.cardContent}>
         <TextField
@@ -92,11 +103,11 @@ function Header() {
     <AppBar position="sticky" color="secondary">
       <Toolbar className="navbarContent">
         <Typography variant="h6">Another Jira Clone</Typography>
-        <Button onClick={handleOpen} color="inherit">
+        <Button onClick={handleModal} color="inherit">
           Create
         </Button>
       </Toolbar>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={handleModal}>
         {modalBody}
       </Modal>
     </AppBar>
