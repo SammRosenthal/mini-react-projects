@@ -58,7 +58,12 @@ function Header() {
   const [acceptanceCriteria, setAcceptranceCriteria] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleModal = () => {
+  const handleModalToggle = () => {
+    setAssignee("")
+    setPoints("")
+    setStatus("")
+    setDescription("")
+    setAcceptranceCriteria("")
     setOpen(!open);
   };
 
@@ -80,10 +85,6 @@ function Header() {
 
   const handleAcceptranceCriteria = event => {
     setAcceptranceCriteria(event.target.value);
-  }
-
-  const emptyFormState = () => {
-
   }
 
   const modalBody = (
@@ -139,11 +140,11 @@ function Header() {
     <AppBar position="sticky" color="secondary">
       <Toolbar className="navbarContent">
         <Typography variant="h6">Another Jira Clone</Typography>
-        <Button onClick={handleModal} color="inherit">
+        <Button onClick={handleModalToggle} color="inherit">
           Create
         </Button>
       </Toolbar>
-      <Modal open={open} onClose={handleModal}>
+      <Modal open={open} onClose={handleModalToggle}>
         {modalBody}
       </Modal>
     </AppBar>
