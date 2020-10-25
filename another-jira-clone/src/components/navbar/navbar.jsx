@@ -53,21 +53,45 @@ function Header() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
+  const [assignee, setAssignee] = useState("");
+  const [points, setPoints] = useState("");
+  const [acceptanceCriteria, setAcceptranceCriteria] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleModal = () => {
     setOpen(!open);
   };
 
+  const handleAssignee = (event) => {
+    setAssignee(event.target.value);
+  }
+
+  const handlePoints = (event) => {
+    setPoints(event.target.value);
+  }
+
   const handleDropDown = (event) => {
     setStatus(event.target.value);
+  }
+
+  const handleDescription = event => {
+    setDescription(event.target.value);
+  }
+
+  const handleAcceptranceCriteria = event => {
+    setAcceptranceCriteria(event.target.value);
+  }
+
+  const emptyFormState = () => {
+
   }
 
   const modalBody = (
     <div className={classes.center}>
       <div id="cardCreationHeader"><h1>Create Card</h1></div>
       <div id="cardGeneralInformation" className={classes.cardGeneralInformation}>
-        <TextField id="assignee" label="Assignee" />
-        <TextField id="points" label="Story Points" />
+        <TextField id="assignee" label="Assignee" onChange={handleAssignee} value={assignee} />
+        <TextField id="points" label="Story Points" onChange={handlePoints} value={points} />
         <FormControl className={classes.dropDown}>
           <InputLabel id="card-status">Status</InputLabel>
           <Select
@@ -91,6 +115,8 @@ function Header() {
           id="acceptanceCriteria"
           label="Acceptance Criteria"
           className={classes.textBox}
+          value={acceptanceCriteria}
+          onChange={handleAcceptranceCriteria}
         />
         <TextField
           multiline
@@ -99,6 +125,8 @@ function Header() {
           id="description"
           label="Description"
           className={classes.textBox}
+          value={description}
+          onChange={handleDescription}
         />
       </div>
       <div id="cardCreationFooter" className={classes.footer}>
