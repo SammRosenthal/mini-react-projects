@@ -70,15 +70,36 @@ function App() {
   const addCard = (card) => {
     const lane = card.status;
 
+    try {
+      if (lane === "TO DO") {
+        handleTodo(card);
+      } else if (lane === "IN PROGRESS") {
+        handleInProgress(card);
+      } else if (lane === "IN TEST") {
+        handleInTest(card);
+      } else if (lane === "DONE") {
+        handleDone(card);
+      }
+    } catch (e) {
+      throw(e)
+    }
   }
 
-  const handleTodo = () => {}
+  const handleTodo = (newCard) => {
+    addTodo([...todo, newCard]);
+  }
 
-  const handleInProgress = () => {}
+  const handleInProgress = (newCard) => {
+    addInProgress([...inProgress, newCard]);
+  }
 
-  const handleInTest = () => {}
+  const handleInTest = (newCard) => {
+    addInTest([...inTest, newCard]);
+  }
 
-  const handleDone = () => {}
+  const handleDone = (newCard) => {
+    addDone([...done, newCard]);
+  }
 
   return (
     <>
