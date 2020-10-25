@@ -11,54 +11,18 @@ function App() {
       status: "In Progress",
       points: "3",
       assignee: "Sam Rosenthal"
-    },
-    {
-      title: "Joe's User Story",
-      status: "In Progress",
-      points: "3",
-      assignee: "Joe Smith"
-    },
-    {
-      title: "Dan's User Story",
-      status: "In Progress",
-      points: "3",
-      assignee: "Dan Nguyen"
     }
   ])
   const [inProgress, addInProgress] = useState([
     {
-      title: "Sam's User Story",
+      title: "Jack's User Story",
       status: "In Progress",
       points: "3",
-      assignee: "Sam Rosenthal"
-    },
-    {
-      title: "Joe's User Story",
-      status: "In Progress",
-      points: "3",
-      assignee: "Joe Smith"
-    },
-    {
-      title: "Dan's User Story",
-      status: "In Progress",
-      points: "3",
-      assignee: "Dan Nguyen"
+      assignee: "Jack Smith"
     }
   ])
   const [inTest, addInTest] = useState([])
   const [done, addDone] = useState([
-    {
-      title: "Sam's User Story",
-      status: "In Progress",
-      points: "3",
-      assignee: "Sam Rosenthal"
-    },
-    {
-      title: "Joe's User Story",
-      status: "In Progress",
-      points: "3",
-      assignee: "Joe Smith"
-    },
     {
       title: "Dan's User Story",
       status: "In Progress",
