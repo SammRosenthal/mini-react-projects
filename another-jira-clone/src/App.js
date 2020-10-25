@@ -67,10 +67,25 @@ function App() {
     }
   ])
 
+  const addCard = (card) => {
+    console.log(card);
+    const lane = card.status;
+
+  }
+
+  const handleTodo = () => {}
+
+  const handleInProgress = () => {}
+
+  const handleInTest = () => {}
+
+  const handleDone = () => {}
+
   return (
     <>
       <CssBaseline />
       <Header
+        addCard={addCard}
         addTodo={addTodo}
         addInProgress={addInProgress}
         addInTest={addInTest}

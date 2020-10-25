@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Header() {
+function Header(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
@@ -131,7 +131,15 @@ function Header() {
         />
       </div>
       <div id="cardCreationFooter" className={classes.footer}>
-        <Button variant="contained" color="primary">Create</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            console.log('hello')
+            props.addCard({status, assignee, points, acceptanceCriteria, description});
+            handleModalToggle();
+          }}
+         >Create</Button>
       </div>
     </div>
   );
