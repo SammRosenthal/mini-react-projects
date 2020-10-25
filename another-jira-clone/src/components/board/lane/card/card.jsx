@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './card.scss';
-import {Card as muiCard, CardContent, Typography} from '@material-ui/core';
+import {Card as MuiCard, CardContent, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 function Card(props) {
     const classes = useStyles();
    return(
-       <muiCard className={classes.root} variant="outlined">
+       <MuiCard className={classes.root} variant="outlined">
            <CardContent className={classes.content}>
                 <Typography className={classes.title}>{props.title}</Typography>
                 <Typography>{props.status}</Typography>
@@ -46,7 +46,7 @@ function Card(props) {
                     <Typography className={classes.pos}>{props.points}</Typography>
                 </div>
             </CardContent>
-       </muiCard>
+       </MuiCard>
     )
 }
 

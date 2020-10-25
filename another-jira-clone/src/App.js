@@ -68,7 +68,6 @@ function App() {
   ])
 
   const addCard = (card) => {
-    console.log(card);
     const lane = card.status;
 
   }
