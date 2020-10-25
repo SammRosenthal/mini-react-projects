@@ -8,9 +8,11 @@ function App() {
   const [todo, addTodo] = useState([
     {
       title: "Sam's User Story",
-      status: "In Progress",
+      status: "To Do",
       points: "3",
-      assignee: "Sam Rosenthal"
+      assignee: "Sam Rosenthal",
+      acceptanceCriteria: "Test AC",
+      description: "test description"
     }
   ])
   const [inProgress, addInProgress] = useState([
@@ -18,16 +20,20 @@ function App() {
       title: "Jack's User Story",
       status: "In Progress",
       points: "3",
-      assignee: "Jack Smith"
+      assignee: "Jack Smith",
+      acceptanceCriteria: "Test AC",
+      description: "test description"
     }
   ])
   const [inTest, addInTest] = useState([])
   const [done, addDone] = useState([
     {
       title: "Dan's User Story",
-      status: "In Progress",
+      status: "Done",
       points: "3",
-      assignee: "Dan Nguyen"
+      assignee: "Dan Nguyen",
+      acceptanceCriteria: "Test AC",
+      description: "test description"
     }
   ])
 

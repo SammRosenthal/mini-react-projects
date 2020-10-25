@@ -8,16 +8,21 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
+  header: {
+    margin: "0px"
+  },
   center: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    flexFlow: "column wrap",
     position: "absolute",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
     overflow: "hidden",
-    height: "80vh",
+    minHeight: "85vh",
+    maxHeight: "95vh",
     width: "800px",
     backgroundColor: "#f4f5f7",
     borderRadius: ".5%",
@@ -27,7 +32,17 @@ const useStyles = makeStyles((theme) => ({
   },
   cardGeneralInformation: {
     display: "flex",
-    justifyContent: "space-evenly"
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "12vh"
+  },
+  cardHeader: {
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  cardStats: {
+    display: "flex",
+    justifyContent: "space-between"
   },
   cardContent: {
     display: "flex",
@@ -37,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
     width: "732px",
     height: "500px"
   },
-  dropDown: {
-    width: 182
+  smallForms: {
+    width: 182,
   },
   textBox: {
     width: "100%",
@@ -51,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header(props) {
   const classes = useStyles();
+  const [title, setTitle] = useState("");
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [assignee, setAssignee] = useState("");
@@ -60,54 +76,58 @@ function Header(props) {
 
   const handleModalToggle = () => {
     setAssignee("")
+    setTitle("")
     setPoints("")
     setStatus("")
     setDescription("")
     setAcceptranceCriteria("")
     setOpen(!open);
   };
-
   const handleAssignee = (event) => {
     setAssignee(event.target.value);
   }
-
+  const handleTitle = (event) => {
+    setTitle(event.target.value);
+  }
   const handlePoints = (event) => {
     setPoints(event.target.value);
   }
-
   const handleDropDown = (event) => {
     setStatus(event.target.value);
   }
-
   const handleDescription = event => {
     setDescription(event.target.value);
   }
-
   const handleAcceptranceCriteria = event => {
     setAcceptranceCriteria(event.target.value);
   }
 
   const modalBody = (
     <div className={classes.center}>
-      <div id="cardCreationHeader"><h1>Create Card</h1></div>
+      <div id="cardCreationHeader" className={classes.header}><h1>Create Card</h1></div>
       <div id="cardGeneralInformation" className={classes.cardGeneralInformation}>
-        <TextField id="assignee" label="Assignee" onChange={handleAssignee} value={assignee} />
-        <TextField id="points" label="Story Points" onChange={handlePoints} value={points} />
-        <FormControl className={classes.dropDown}>
-          <InputLabel id="card-status">Status</InputLabel>
-          <Select
-            labelId="card-status"
-            id="card-status-select"
-            value={status}
-            onChange={handleDropDown}
-          >
-            <MenuItem value={"To Do"}>TO DO</MenuItem>
-            <MenuItem value={"In Progress"}>IN PROGRESS</MenuItem>
-            <MenuItem value={"In Test"}>IN TEST</MenuItem>
-            <MenuItem value={"Done"}>DONE</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+        <div id="cardHeader" className={classes.cardHeader}>
+          <TextField className={classes.smallForms} id="title" label="Title" onChange={handleTitle} value={title} />
+        </div>
+        <div id="cardStats" className={classes.cardStats}>
+          <TextField className={classes.smallForms} id="assignee" label="Assignee" onChange={handleAssignee} value={assignee} />
+          <TextField className={classes.smallForms} id="points" label="Story Points" onChange={handlePoints} value={points} />
+          <FormControl className={classes.smallForms}>
+            <InputLabel id="card-status">Status</InputLabel>
+            <Select
+              labelId="card-status"
+              id="card-status-select"
+              value={status}
+              onChange={handleDropDown}
+            >
+              <MenuItem value={"To Do"}>TO DO</MenuItem>
+              <MenuItem value={"In Progress"}>IN PROGRESS</MenuItem>
+              <MenuItem value={"In Test"}>IN TEST</MenuItem>
+              <MenuItem value={"Done"}>DONE</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+     </div>
       <div id="cardContent" className={classes.cardContent}>
         <TextField
           multiline
@@ -136,7 +156,7 @@ function Header(props) {
           color="primary"
           onClick={() => {
             console.log('hello')
-            props.addCard({status, assignee, points, acceptanceCriteria, description});
+            props.addCard({status, assignee, points, acceptanceCriteria, description, title});
             handleModalToggle();
           }}
          >Create</Button>
