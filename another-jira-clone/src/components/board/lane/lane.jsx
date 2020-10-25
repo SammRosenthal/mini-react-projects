@@ -24,7 +24,7 @@ function Lane(props) {
                     title={v.title}
                     status={v.status}
                     points={v.points}
-                    user={v.user}
+                    assignee={v.assignee}
                 />
             })}
         </div>

@@ -10,19 +10,19 @@ function App() {
       title: "Sam's User Story",
       status: "In Progress",
       points: "3",
-      user: "Sam Rosenthal"
+      assignee: "Sam Rosenthal"
     },
     {
       title: "Joe's User Story",
       status: "In Progress",
       points: "3",
-      user: "Joe Smith"
+      assignee: "Joe Smith"
     },
     {
       title: "Dan's User Story",
       status: "In Progress",
       points: "3",
-      user: "Dan Nguyen"
+      assignee: "Dan Nguyen"
     }
   ])
   const [inProgress, addInProgress] = useState([
@@ -30,19 +30,19 @@ function App() {
       title: "Sam's User Story",
       status: "In Progress",
       points: "3",
-      user: "Sam Rosenthal"
+      assignee: "Sam Rosenthal"
     },
     {
       title: "Joe's User Story",
       status: "In Progress",
       points: "3",
-      user: "Joe Smith"
+      assignee: "Joe Smith"
     },
     {
       title: "Dan's User Story",
       status: "In Progress",
       points: "3",
-      user: "Dan Nguyen"
+      assignee: "Dan Nguyen"
     }
   ])
   const [inTest, addInTest] = useState([])
@@ -51,19 +51,19 @@ function App() {
       title: "Sam's User Story",
       status: "In Progress",
       points: "3",
-      user: "Sam Rosenthal"
+      assignee: "Sam Rosenthal"
     },
     {
       title: "Joe's User Story",
       status: "In Progress",
       points: "3",
-      user: "Joe Smith"
+      assignee: "Joe Smith"
     },
     {
       title: "Dan's User Story",
       status: "In Progress",
       points: "3",
-      user: "Dan Nguyen"
+      assignee: "Dan Nguyen"
     }
   ])
 
@@ -71,13 +71,13 @@ function App() {
     const lane = card.status;
 
     try {
-      if (lane === "TO DO") {
+      if (lane === "To Do") {
         handleTodo(card);
-      } else if (lane === "IN PROGRESS") {
+      } else if (lane === "In Progress") {
         handleInProgress(card);
-      } else if (lane === "IN TEST") {
+      } else if (lane === "In Test") {
         handleInTest(card);
-      } else if (lane === "DONE") {
+      } else if (lane === "Done") {
         handleDone(card);
       }
     } catch (e) {

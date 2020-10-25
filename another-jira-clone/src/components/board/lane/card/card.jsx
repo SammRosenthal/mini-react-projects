@@ -42,7 +42,7 @@ function Card(props) {
                 <Typography>{props.status}</Typography>
 
                 <div className={classes.cardInfo}>
-                    <Typography className={classes.pos}>{props.user}</Typography>
+                    <Typography className={classes.pos}>{props.assignee}</Typography>
                     <Typography className={classes.pos}>{props.points}</Typography>
                 </div>
             </CardContent>

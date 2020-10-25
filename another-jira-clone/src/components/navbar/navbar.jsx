@@ -101,10 +101,10 @@ function Header(props) {
             value={status}
             onChange={handleDropDown}
           >
-            <MenuItem value={"TO DO"}>TO DO</MenuItem>
-            <MenuItem value={"IN PROGRESS"}>IN PROGRESS</MenuItem>
-            <MenuItem value={"IN TEST"}>IN TEST</MenuItem>
-            <MenuItem value={"DONE"}>DONE</MenuItem>
+            <MenuItem value={"To Do"}>TO DO</MenuItem>
+            <MenuItem value={"In Progress"}>IN PROGRESS</MenuItem>
+            <MenuItem value={"In Test"}>IN TEST</MenuItem>
+            <MenuItem value={"Done"}>DONE</MenuItem>
           </Select>
         </FormControl>
       </div>
