@@ -185,7 +185,6 @@ function Header(props) {
           variant="contained"
           color="primary"
           onClick={() => {
-            console.log("hello");
             props.addCard({
               status,
               assignee,

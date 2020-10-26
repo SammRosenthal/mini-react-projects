@@ -40,35 +40,20 @@ function App() {
   const addCard = (card) => {
     const lane = card.status;
 
-    try {
-      if (lane === "To Do") {
-        handleTodo(card);
-      } else if (lane === "In Progress") {
-        handleInProgress(card);
-      } else if (lane === "In Test") {
-        handleInTest(card);
-      } else if (lane === "Done") {
-        handleDone(card);
-      }
-    } catch (e) {
-      throw(e)
+    if (lane === "To Do") {
+      addTodo([...todo, card]);
+    } else if (lane === "In Progress") {
+      addInProgress([...inProgress, card]);
+    } else if (lane === "In Test") {
+      addInTest([...inTest, card]);
+    } else if (lane === "Done") {
+      addDone([...done, card]);
     }
   }
 
-  const handleTodo = (newCard) => {
-    addTodo([...todo, newCard]);
-  }
-
-  const handleInProgress = (newCard) => {
-    addInProgress([...inProgress, newCard]);
-  }
-
-  const handleInTest = (newCard) => {
-    addInTest([...inTest, newCard]);
-  }
-
-  const handleDone = (newCard) => {
-    addDone([...done, newCard]);
+  const deleteCard = (card) => {
+    // TODO
+    console.log(card)
   }
 
   return (
@@ -86,6 +71,7 @@ function App() {
         inProgress={inProgress}
         inTest={inTest}
         done={done}
+        deleteCard={deleteCard}
       />
     </>
   );

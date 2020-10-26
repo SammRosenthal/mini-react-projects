@@ -45,7 +45,12 @@ function Card(props) {
       <CardContent className={classes.content}>
         <div className={classes.header}>
           <Typography className={classes.title}>{props.title}</Typography>
-          <Typography className={classes.delete}>
+          <Typography
+            className={classes.delete}
+            onClick={function () {
+              props.deleteCard(props.id);
+            }}
+          >
             <DeleteIcon />
           </Typography>
         </div>
