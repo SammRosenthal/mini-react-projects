@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import "./navbar.scss";
-import { AppBar, Toolbar, Typography, Button, Select, FormControl } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Select,
+  FormControl,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    margin: "0px"
+    margin: "0px",
   },
   center: {
     display: "flex",
@@ -28,21 +35,21 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: ".5%",
     border: "2px solid black",
     outline: "none",
-    padding: "18px 32px"
+    padding: "18px 32px",
   },
   cardGeneralInformation: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "12vh"
+    height: "12vh",
   },
   cardHeader: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   cardStats: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   cardContent: {
     display: "flex",
@@ -50,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
     alignItems: "center",
     width: "732px",
-    height: "500px"
+    height: "500px",
   },
   smallForms: {
     width: 182,
@@ -60,8 +67,8 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     display: "flex",
-    justifyContent: "flex-end"
-  }
+    justifyContent: "flex-end",
+  },
 }));
 
 function Header(props) {
@@ -75,43 +82,66 @@ function Header(props) {
   const [description, setDescription] = useState("");
 
   const handleModalToggle = () => {
-    setAssignee("")
-    setTitle("")
-    setPoints("")
-    setStatus("")
-    setDescription("")
-    setAcceptranceCriteria("")
+    setAssignee("");
+    setTitle("");
+    setPoints("");
+    setStatus("");
+    setDescription("");
+    setAcceptranceCriteria("");
     setOpen(!open);
   };
   const handleAssignee = (event) => {
     setAssignee(event.target.value);
-  }
+  };
   const handleTitle = (event) => {
     setTitle(event.target.value);
-  }
+  };
   const handlePoints = (event) => {
     setPoints(event.target.value);
-  }
+  };
   const handleDropDown = (event) => {
     setStatus(event.target.value);
-  }
-  const handleDescription = event => {
+  };
+  const handleDescription = (event) => {
     setDescription(event.target.value);
-  }
-  const handleAcceptranceCriteria = event => {
+  };
+  const handleAcceptranceCriteria = (event) => {
     setAcceptranceCriteria(event.target.value);
-  }
+  };
 
   const modalBody = (
     <div className={classes.center}>
-      <div id="cardCreationHeader" className={classes.header}><h1>Create Card</h1></div>
-      <div id="cardGeneralInformation" className={classes.cardGeneralInformation}>
+      <div id="cardCreationHeader" className={classes.header}>
+        <h1>Create Card</h1>
+      </div>
+      <div
+        id="cardGeneralInformation"
+        className={classes.cardGeneralInformation}
+      >
         <div id="cardHeader" className={classes.cardHeader}>
-          <TextField className={classes.smallForms} id="title" label="Title" onChange={handleTitle} value={title} />
+          <TextField
+            className={classes.smallForms}
+            id="title"
+            label="Title"
+            onChange={handleTitle}
+            value={title}
+          />
         </div>
         <div id="cardStats" className={classes.cardStats}>
-          <TextField className={classes.smallForms} id="assignee" label="Assignee" onChange={handleAssignee} value={assignee} />
-          <TextField className={classes.smallForms} id="points" label="Story Points" onChange={handlePoints} value={points} />
+          <TextField
+            className={classes.smallForms}
+            id="assignee"
+            label="Assignee"
+            onChange={handleAssignee}
+            value={assignee}
+          />
+          <TextField
+            className={classes.smallForms}
+            id="points"
+            label="Story Points"
+            onChange={handlePoints}
+            value={points}
+          />
           <FormControl className={classes.smallForms}>
             <InputLabel id="card-status">Status</InputLabel>
             <Select
@@ -127,7 +157,7 @@ function Header(props) {
             </Select>
           </FormControl>
         </div>
-     </div>
+      </div>
       <div id="cardContent" className={classes.cardContent}>
         <TextField
           multiline
@@ -155,11 +185,20 @@ function Header(props) {
           variant="contained"
           color="primary"
           onClick={() => {
-            console.log('hello')
-            props.addCard({status, assignee, points, acceptanceCriteria, description, title});
+            console.log("hello");
+            props.addCard({
+              status,
+              assignee,
+              points,
+              acceptanceCriteria,
+              description,
+              title,
+            });
             handleModalToggle();
           }}
-         >Create</Button>
+        >
+          Create
+        </Button>
       </div>
     </div>
   );
