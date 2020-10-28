@@ -90,6 +90,19 @@ function Header(props) {
     setAcceptranceCriteria("");
     setOpen(!open);
   };
+  const createCard = () => {
+    const newCard = {
+      id: 0,
+      status,
+      assignee,
+      points,
+      acceptanceCriteria,
+      description,
+      title,
+    };
+    handleModalToggle();
+    props.addCard(newCard);
+  };
   const handleAssignee = (event) => {
     setAssignee(event.target.value);
   };
@@ -181,21 +194,7 @@ function Header(props) {
         />
       </div>
       <div id="cardCreationFooter" className={classes.footer}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            props.addCard({
-              status,
-              assignee,
-              points,
-              acceptanceCriteria,
-              description,
-              title,
-            });
-            handleModalToggle();
-          }}
-        >
+        <Button variant="contained" color="primary" onClick={createCard}>
           Create
         </Button>
       </div>
