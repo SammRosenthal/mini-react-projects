@@ -102,7 +102,6 @@ function Header(props) {
       title,
     };
     handleModalToggle();
-    console.log(newCard.id);
     props.addCard(newCard);
   };
   const handleAssignee = (event) => {
