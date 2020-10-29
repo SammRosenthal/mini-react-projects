@@ -13,6 +13,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import Modal from "@material-ui/core/Modal";
+import uniqid from "uniqid";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -92,7 +93,7 @@ function Header(props) {
   };
   const createCard = () => {
     const newCard = {
-      id: 0,
+      id: uniqid(),
       status,
       assignee,
       points,
@@ -101,6 +102,7 @@ function Header(props) {
       title,
     };
     handleModalToggle();
+    console.log(newCard.id);
     props.addCard(newCard);
   };
   const handleAssignee = (event) => {
