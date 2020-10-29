@@ -48,7 +48,7 @@ function Card(props) {
           <Typography
             className={classes.delete}
             onClick={function () {
-              props.deleteCard(props.id);
+              props.deleteCard(props.id, props.status);
             }}
           >
             <DeleteIcon />

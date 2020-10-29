@@ -12,7 +12,8 @@ function App() {
       points: "3",
       assignee: "Sam Rosenthal",
       acceptanceCriteria: "Test AC",
-      description: "test description"
+      description: "test description",
+      id: "test1"
     }
   ])
   const [inProgress, addInProgress] = useState([
@@ -22,7 +23,8 @@ function App() {
       points: "3",
       assignee: "Jack Smith",
       acceptanceCriteria: "Test AC",
-      description: "test description"
+      description: "test description",
+      id: "test2"
     }
   ])
   const [inTest, addInTest] = useState([])
@@ -33,7 +35,8 @@ function App() {
       points: "3",
       assignee: "Dan Nguyen",
       acceptanceCriteria: "Test AC",
-      description: "test description"
+      description: "test description",
+      id: "test3"
     }
   ])
 
@@ -51,9 +54,16 @@ function App() {
     }
   }
 
-  const deleteCard = (card) => {
-    // TODO
-    console.log(card)
+  const deleteCard = (id, lane) => {
+     if (lane === "To Do") {
+      addTodo(todo.filter(v => id !== v.id));
+    } else if (lane === "In Progress") {
+      addInProgress(inProgress.filter(v => id !== v.id));
+    } else if (lane === "In Test") {
+      addInTest(inTest.filter(v => id !== v.id));
+    } else if (lane === "Done") {
+      addDone(done.filter(v => id !== v.id));
+    }
   }
 
   return (

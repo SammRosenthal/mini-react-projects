@@ -15,8 +15,8 @@ function Lane(props) {
         return (
           <Card
             // key and id will be a unique identifier for each card
-            key={i}
-            id={i}
+            key={v.id}
+            id={v.id}
             title={v.title}
             status={v.status}
             points={v.points}
