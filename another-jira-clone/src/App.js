@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Board from "./components/board/board";
 import Header from "./components/navbar/navbar";
+import CreateCard from "./components/createCard/CreateCard";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "fontsource-roboto";
 
@@ -13,9 +14,9 @@ function App() {
       assignee: "Sam Rosenthal",
       acceptanceCriteria: "Test AC",
       description: "test description",
-      id: "test1"
-    }
-  ])
+      id: "test1",
+    },
+  ]);
   const [inProgress, addInProgress] = useState([
     {
       title: "Jack's User Story",
@@ -24,10 +25,10 @@ function App() {
       assignee: "Jack Smith",
       acceptanceCriteria: "Test AC",
       description: "test description",
-      id: "test2"
-    }
-  ])
-  const [inTest, addInTest] = useState([])
+      id: "test2",
+    },
+  ]);
+  const [inTest, addInTest] = useState([]);
   const [done, addDone] = useState([
     {
       title: "Dan's User Story",
@@ -36,9 +37,9 @@ function App() {
       assignee: "Dan Nguyen",
       acceptanceCriteria: "Test AC",
       description: "test description",
-      id: "test3"
-    }
-  ])
+      id: "test3",
+    },
+  ]);
 
   const addCard = (card) => {
     const lane = card.status;
@@ -52,23 +53,24 @@ function App() {
     } else if (lane === "Done") {
       addDone([...done, card]);
     }
-  }
+  };
 
   const deleteCard = (id, lane) => {
-     if (lane === "To Do") {
-      addTodo(todo.filter(v => id !== v.id));
+    if (lane === "To Do") {
+      addTodo(todo.filter((v) => id !== v.id));
     } else if (lane === "In Progress") {
-      addInProgress(inProgress.filter(v => id !== v.id));
+      addInProgress(inProgress.filter((v) => id !== v.id));
     } else if (lane === "In Test") {
-      addInTest(inTest.filter(v => id !== v.id));
+      addInTest(inTest.filter((v) => id !== v.id));
     } else if (lane === "Done") {
-      addDone(done.filter(v => id !== v.id));
+      addDone(done.filter((v) => id !== v.id));
     }
-  }
+  };
 
   return (
     <>
       <CssBaseline />
+      {/*
       <Header
         addCard={addCard}
         addTodo={addTodo}
@@ -83,6 +85,8 @@ function App() {
         done={done}
         deleteCard={deleteCard}
       />
+      */}
+      <CreateCard />
     </>
   );
 }
