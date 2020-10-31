@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Board from "./components/board/board";
 import Header from "./components/navbar/navbar";
-import CreateCard from "./components/createCard/CreateCard";
+import ViewCard from "./components/viewCard/ViewCard";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "fontsource-roboto";
 
@@ -86,7 +86,7 @@ function App() {
         deleteCard={deleteCard}
       />
       */}
-      <CreateCard />
+      <ViewCard />
     </>
   );
 }

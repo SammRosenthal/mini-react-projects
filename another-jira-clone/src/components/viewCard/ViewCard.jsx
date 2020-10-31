@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Select, FormControl } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -64,6 +64,20 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateCard = () => {
   const classes = useStyles();
+  const [title, setTitle] = useState("");
+  const [titleEditable, setTitleEditable] = useState(false);
+  const [status, setStatus] = useState("");
+  const [statusEditable, setStatusEditable] = useState(false);
+  const [points, setPoints] = useState("");
+  const [pointsEditable, setPointsEditable] = useState(false);
+  const [assignee, setAssignee] = useState("");
+  const [assigneeEditable, setAssigneeEditable] = useState(false);
+  const [acceptanceCriteria, setAcceptanceCriteria] = useState("");
+  const [acceptanceCriteriaEditable, setAcceptanceCriteriaEditable] = useState(
+    false
+  );
+  const [description, setDescription] = useState("");
+  const [descriptionEditable, setDescriptionEditable] = useState(false);
 
   return (
     <div className={classes.center}>
