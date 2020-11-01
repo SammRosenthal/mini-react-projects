@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     width: "100%",
+    color: "black",
   },
   footer: {
     display: "flex",
@@ -72,12 +73,25 @@ const CreateCard = () => {
   const [pointsEditable, setPointsEditable] = useState(false);
   const [assignee, setAssignee] = useState("Sam Rosenthal");
   const [assigneeEditable, setAssigneeEditable] = useState(false);
-  const [acceptanceCriteria, setAcceptanceCriteria] = useState("Test Criteria");
+  const [acceptanceCriteria, setAcceptanceCriteria] = useState(
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  );
   const [acceptanceCriteriaEditable, setAcceptanceCriteriaEditable] = useState(
     false
   );
-  const [description, setDescription] = useState("Test Description");
+  const [description, setDescription] = useState(
+    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+  );
   const [descriptionEditable, setDescriptionEditable] = useState(false);
+
+  const handleDescription = () => {
+    if (descriptionEditable) {
+      // update description
+      // toggle
+    } else {
+      setDescriptionEditable(!descriptionEditable);
+    }
+  };
 
   return (
     <div className={classes.center}>
@@ -177,30 +191,18 @@ const CreateCard = () => {
           className={classes.textBox}
           onClick={() => setDescriptionEditable(!descriptionEditable)}
         >
-          {descriptionEditable ? (
-            <TextField
-              multiline
-              rows={10}
-              variant="outlined"
-              id="description"
-              label="Description"
-              className={classes.textBox}
-              value={description}
-              // onChange={handleDescription}
-            />
-          ) : (
-            <h3>{description}</h3>
-          )}
+          <TextField
+            multiline
+            rows={10}
+            id="description"
+            label="Description"
+            variant={descriptionEditable ? "outlined" : "filled"}
+            className={classes.textBox}
+            value={description}
+            disabled={!descriptionEditable}
+            // onChange={handleDescription}
+          />
         </div>
-      </div>
-      <div id="cardCreationFooter" className={classes.footer}>
-        <Button
-          variant="contained"
-          color="primary"
-          // onClick={createCard}
-        >
-          Create
-        </Button>
       </div>
     </div>
   );
