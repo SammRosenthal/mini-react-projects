@@ -64,91 +64,134 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateCard = () => {
   const classes = useStyles();
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("Test Modal");
   const [titleEditable, setTitleEditable] = useState(false);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("In Progress");
   const [statusEditable, setStatusEditable] = useState(false);
-  const [points, setPoints] = useState("");
+  const [points, setPoints] = useState("5");
   const [pointsEditable, setPointsEditable] = useState(false);
-  const [assignee, setAssignee] = useState("");
+  const [assignee, setAssignee] = useState("Sam Rosenthal");
   const [assigneeEditable, setAssigneeEditable] = useState(false);
-  const [acceptanceCriteria, setAcceptanceCriteria] = useState("");
+  const [acceptanceCriteria, setAcceptanceCriteria] = useState("Test Criteria");
   const [acceptanceCriteriaEditable, setAcceptanceCriteriaEditable] = useState(
     false
   );
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("Test Description");
   const [descriptionEditable, setDescriptionEditable] = useState(false);
 
   return (
     <div className={classes.center}>
-      <div id="cardCreationHeader" className={classes.header}>
-        <h1>Create Card</h1>
-      </div>
       <div
-        id="cardGeneralInformation"
-        className={classes.cardGeneralInformation}
+        id="cardCreationHeader"
+        className={classes.header}
+        onClick={() => setTitleEditable(!titleEditable)}
       >
-        <div id="cardHeader" className={classes.cardHeader}>
+        {titleEditable ? (
           <TextField
             className={classes.smallForms}
             id="title"
             label="Title"
             //onChange={}
-            // value={}
+            value={title}
           />
-        </div>
+        ) : (
+          <h1>{title}</h1>
+        )}
+      </div>
+      <div
+        id="cardGeneralInformation"
+        className={classes.cardGeneralInformation}
+      >
         <div id="cardStats" className={classes.cardStats}>
-          <TextField
-            className={classes.smallForms}
-            id="assignee"
-            label="Assignee"
-            // onChange={handleAssignee}
-            // value={assignee}
-          />
-          <TextField
-            className={classes.smallForms}
-            id="points"
-            label="Story Points"
-            // onChange={handlePoints}
-            // value={points}
-          />
-          <FormControl className={classes.smallForms}>
-            <InputLabel id="card-status">Status</InputLabel>
-            <Select
-              labelId="card-status"
-              id="card-status-select"
-              // value={status}
-              // onChange={handleDropDown}
-            >
-              <MenuItem value={"To Do"}>TO DO</MenuItem>
-              <MenuItem value={"In Progress"}>IN PROGRESS</MenuItem>
-              <MenuItem value={"In Test"}>IN TEST</MenuItem>
-              <MenuItem value={"Done"}>DONE</MenuItem>
-            </Select>
-          </FormControl>
+          <div onClick={() => setAssigneeEditable(!assigneeEditable)}>
+            {assigneeEditable ? (
+              <TextField
+                className={classes.smallForms}
+                id="assignee"
+                label="Assignee"
+                // onChange={handleAssignee}
+                value={assignee}
+              />
+            ) : (
+              <h3 className={classes.smallForms}>{assignee}</h3>
+            )}
+          </div>
+          <div onClick={() => setPointsEditable(!pointsEditable)}>
+            {pointsEditable ? (
+              <TextField
+                className={classes.smallForms}
+                id="points"
+                label="Story Points"
+                // onChange={handlePoints}
+                value={points}
+              />
+            ) : (
+              <h3>{points}</h3>
+            )}
+          </div>
+          <div onClick={() => setStatusEditable(!statusEditable)}>
+            {statusEditable ? (
+              <FormControl className={classes.smallForms}>
+                <InputLabel id="card-status">Status</InputLabel>
+                <Select
+                  labelId="card-status"
+                  id="card-status-select"
+                  value={status}
+                  // onChange={handleDropDown}
+                >
+                  <MenuItem value={"To Do"}>To Do</MenuItem>
+                  <MenuItem value={"In Progress"}>In Progress</MenuItem>
+                  <MenuItem value={"In Test"}>In Test</MenuItem>
+                  <MenuItem value={"Done"}>Done</MenuItem>
+                </Select>
+              </FormControl>
+            ) : (
+              <h3>{status}</h3>
+            )}
+          </div>
         </div>
       </div>
       <div id="cardContent" className={classes.cardContent}>
-        <TextField
-          multiline
-          rows={10}
-          variant="outlined"
-          id="acceptanceCriteria"
-          label="Acceptance Criteria"
+        <div
           className={classes.textBox}
-          // value={acceptanceCriteria}
-          // onChange={handleAcceptranceCriteria}
-        />
-        <TextField
-          multiline
-          rows={10}
-          variant="outlined"
-          id="description"
-          label="Description"
+          onClick={() =>
+            setAcceptanceCriteriaEditable(!acceptanceCriteriaEditable)
+          }
+        >
+          {acceptanceCriteriaEditable ? (
+            <TextField
+              multiline
+              rows={10}
+              variant="outlined"
+              id="acceptanceCriteria"
+              label="Acceptance Criteria"
+              className={classes.textBox}
+              value={acceptanceCriteria}
+              // onChange={handleAcceptranceCriteria}
+            />
+          ) : (
+            <h3>{acceptanceCriteria}</h3>
+          )}
+        </div>
+        <div
           className={classes.textBox}
-          // value={description}
-          // onChange={handleDescription}
-        />
+          onClick={() => setDescriptionEditable(!descriptionEditable)}
+        >
+          {descriptionEditable ? (
+            <TextField
+              multiline
+              rows={10}
+              variant="outlined"
+              id="description"
+              label="Description"
+              className={classes.textBox}
+              value={description}
+              // onChange={handleDescription}
+            />
+          ) : (
+            <h3>{description}</h3>
+          )}
+        </div>
       </div>
       <div id="cardCreationFooter" className={classes.footer}>
         <Button
