@@ -101,17 +101,15 @@ const CreateCard = () => {
         className={classes.header}
         onClick={() => setTitleEditable(!titleEditable)}
       >
-        {titleEditable ? (
-          <TextField
-            className={classes.smallForms}
-            id="title"
-            label="Title"
-            //onChange={}
-            value={title}
-          />
-        ) : (
-          <h1>{title}</h1>
-        )}
+        <TextField
+          className={classes.smallForms}
+          id="title"
+          label="Title"
+          variant={titleEditable ? "outlined" : "filled"}
+          disabled={!titleEditable}
+          //onChange={}
+          value={title}
+        />
       </div>
       <div
         id="cardGeneralInformation"
@@ -119,50 +117,43 @@ const CreateCard = () => {
       >
         <div id="cardStats" className={classes.cardStats}>
           <div onClick={() => setAssigneeEditable(!assigneeEditable)}>
-            {assigneeEditable ? (
-              <TextField
-                className={classes.smallForms}
-                id="assignee"
-                label="Assignee"
-                // onChange={handleAssignee}
-                value={assignee}
-              />
-            ) : (
-              <h3 className={classes.smallForms}>{assignee}</h3>
-            )}
+            <TextField
+              className={classes.smallForms}
+              id="assignee"
+              label="Assignee"
+              variant={assigneeEditable ? "outlined" : "filled"}
+              disabled={!assigneeEditable}
+              // onChange={handleAssignee}
+              value={assignee}
+            />
           </div>
           <div onClick={() => setPointsEditable(!pointsEditable)}>
-            {pointsEditable ? (
-              <TextField
-                className={classes.smallForms}
-                id="points"
-                label="Story Points"
-                // onChange={handlePoints}
-                value={points}
-              />
-            ) : (
-              <h3>{points}</h3>
-            )}
+            <TextField
+              className={classes.smallForms}
+              id="points"
+              label="Story Points"
+              variant={pointsEditable ? "outlined" : "filled"}
+              disabled={!pointsEditable}
+              // onChange={handlePoints}
+              value={points}
+            />
           </div>
           <div onClick={() => setStatusEditable(!statusEditable)}>
-            {statusEditable ? (
-              <FormControl className={classes.smallForms}>
-                <InputLabel id="card-status">Status</InputLabel>
-                <Select
-                  labelId="card-status"
-                  id="card-status-select"
-                  value={status}
-                  // onChange={handleDropDown}
-                >
-                  <MenuItem value={"To Do"}>To Do</MenuItem>
-                  <MenuItem value={"In Progress"}>In Progress</MenuItem>
-                  <MenuItem value={"In Test"}>In Test</MenuItem>
-                  <MenuItem value={"Done"}>Done</MenuItem>
-                </Select>
-              </FormControl>
-            ) : (
-              <h3>{status}</h3>
-            )}
+            <FormControl className={classes.smallForms}>
+              <InputLabel id="card-status">Status</InputLabel>
+              <Select
+                labelId="card-status"
+                id="card-status-select"
+                value={status}
+                disabled={!statusEditable}
+                // onChange={handleDropDown}
+              >
+                <MenuItem value={"To Do"}>To Do</MenuItem>
+                <MenuItem value={"In Progress"}>In Progress</MenuItem>
+                <MenuItem value={"In Test"}>In Test</MenuItem>
+                <MenuItem value={"Done"}>Done</MenuItem>
+              </Select>
+            </FormControl>
           </div>
         </div>
       </div>
