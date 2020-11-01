@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   textBox: {
     width: "100%",
     color: "black",
+    transition: "height 5s",
   },
   footer: {
     display: "flex",
@@ -172,20 +173,17 @@ const CreateCard = () => {
             setAcceptanceCriteriaEditable(!acceptanceCriteriaEditable)
           }
         >
-          {acceptanceCriteriaEditable ? (
-            <TextField
-              multiline
-              rows={10}
-              variant="outlined"
-              id="acceptanceCriteria"
-              label="Acceptance Criteria"
-              className={classes.textBox}
-              value={acceptanceCriteria}
-              // onChange={handleAcceptranceCriteria}
-            />
-          ) : (
-            <h3>{acceptanceCriteria}</h3>
-          )}
+          <TextField
+            multiline
+            rows={10}
+            variant={acceptanceCriteriaEditable ? "outlined" : "filled"}
+            id="acceptanceCriteria"
+            label="Acceptance Criteria"
+            className={classes.textBox}
+            value={acceptanceCriteria}
+            disabled={!acceptanceCriteriaEditable}
+            // onChange={handleAcceptranceCriteria}
+          />
         </div>
         <div
           className={classes.textBox}
