@@ -94,12 +94,16 @@ const CreateCard = () => {
     }
   };
 
+  const handleTitle = (event) => {
+    setTitle(event.target.value);
+  };
+
   return (
     <div className={classes.center}>
       <div
         id="cardCreationHeader"
         className={classes.header}
-        onClick={() => setTitleEditable(!titleEditable)}
+        onClick={() => setTitleEditable(true)}
       >
         <TextField
           className={classes.smallForms}
@@ -107,7 +111,7 @@ const CreateCard = () => {
           label="Title"
           variant={titleEditable ? "outlined" : "filled"}
           disabled={!titleEditable}
-          //onChange={}
+          onChange={handleTitle}
           value={title}
         />
       </div>
