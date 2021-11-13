@@ -1,6 +1,12 @@
+import Lane from './components/lane/Lane';
+
 function App() {
   return (
-    <div>hello</div>
+    <div className="md:flex-row h-auto flex items-center flex-col">
+      <Lane />
+      <Lane />
+      <Lane />
+    </div>
   );
 }
 
