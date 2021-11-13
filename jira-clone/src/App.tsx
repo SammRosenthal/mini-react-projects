@@ -4,7 +4,7 @@ import Lane from './components/lane/Lane';
 function App() {
 
   return (
-    <div className="md:flex-row h-screen w-screen flex items-center flex-col overflow-auto">
+    <div className="md:flex-row h-screen w-screen flex items-center flex-col overflow-auto justify-center">
       <Lane title="To Do" cards={4} />
       <Lane title="In Progress" cards={2} />
       <Lane title="In QA" cards={1} />
